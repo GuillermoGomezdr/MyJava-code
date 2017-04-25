@@ -1,0 +1,12 @@
+//05.04.2017
+public class Coche extends Vehiculo {
+
+	//1. Añadir los atributos de la clase
+
+	String color;
+	double precio;
+	double peso;
+	char combustible;
+	int plazas;
+
+}

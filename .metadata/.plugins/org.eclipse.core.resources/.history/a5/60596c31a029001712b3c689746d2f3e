@@ -1,0 +1,4 @@
+
+public class General {
+	String dni = new String;
+}

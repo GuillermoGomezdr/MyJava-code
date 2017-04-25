@@ -1,0 +1,8 @@
+
+public class Profesor extends General {
+	double sueldo;
+	int aniosExperiencia;
+	boolean esFijo;
+	
+	
+}

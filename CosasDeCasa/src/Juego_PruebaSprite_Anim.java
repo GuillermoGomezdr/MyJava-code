@@ -7,13 +7,18 @@ import javax.swing.JLabel;
 
 public class Juego_PruebaSprite_Anim{
 	
-	 
+	
 	static JLabel PJlabel = new JLabel("");					// Creo un JLaber.
 	static boolean movRight = false;						// Creamos una variable booleana para cada tipo de movimiento,
 	static boolean movLeft = false;							// y las inicializamos como false.
 	static boolean movUp = false;
 	static boolean movDown = false;
 	static String rutaRel = ".//Pj_Estados//";
+	static String[][] walkDirection = 
+		{{"Derecha_Caminando1.png","Derecha_Caminando2.png", "Derecha_Iddle.png"},
+		 {"Izquierda_Caminando1.png","Izquierda_Caminando2.png", "Izquierda_Iddle.png"},
+		 {"Frente_Caminando1.png","Frente_Caminando2.png", "Frente_Iddle.png"},
+		 {"Trasero_Caminando1.png","Trasero_Caminando2.png","Trasero_Iddle.png"}};
 	
 	public static void main (String[] args) {
      	
@@ -70,8 +75,7 @@ public class Juego_PruebaSprite_Anim{
 			movRight = false;												// Ponemos todos las variables de movimiento a false.
 			movLeft = false;
 			movUp = false;
-			movDown = false;
-			
+			movDown = false;	
 		}
 	}
 	
@@ -104,43 +108,37 @@ public class Juego_PruebaSprite_Anim{
 		if(eje == 'x'){
 			if(recorrido > 0){													
 				if((newCoord - CoordCamb) > 50){
-					img(rutaRel+"Derecha_Caminando1.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[0][0], Pj, CoordCamb, CoordStatic);
 				} else if((newCoord - CoordCamb) < 50 & (newCoord - CoordCamb) > 1){
-					img(rutaRel+"Derecha_Caminando2.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[0][1], Pj, CoordCamb, CoordStatic);
 				} else{
-					img(rutaRel+"Derecha_Iddle.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[0][2], Pj, CoordCamb, CoordStatic);
 				}
 			}else if (recorrido < 0){
 				if((CoordCamb - newCoord) > 50){
-					System.out.println("1");
-					img(rutaRel+"Izquierda_Caminando1.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[1][0], Pj, CoordCamb, CoordStatic);
 				} else if((CoordCamb - newCoord) < 50 & (CoordCamb - newCoord) >1){
-					System.out.println("2");
-					img(rutaRel+"Izquierda_Caminando2.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[1][1], Pj, CoordCamb, CoordStatic);
 				} else{
-					System.out.println("3");
-					img(rutaRel+"Izquierda_Iddle.png", Pj, CoordCamb, CoordStatic);
+					img(rutaRel+walkDirection[1][2], Pj, CoordCamb, CoordStatic);
 				}
 			}
 		} else if (eje == 'y'){
 			if(recorrido > 0){													
 				if((newCoord - CoordCamb) > 50){
-					System.out.println("1");
-					img(rutaRel+"Frente_Caminando1.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[2][0], Pj, CoordStatic, CoordCamb);
 				} else if((newCoord - CoordCamb) < 50 & (newCoord - CoordCamb) >1){
-					System.out.println("2");
-					img(rutaRel+"Frente_Caminando2.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[2][1], Pj, CoordStatic, CoordCamb);
 				} else{
-					System.out.println("3");
-					img(rutaRel+"Frente_Iddle.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[2][2], Pj, CoordStatic, CoordCamb);
 				}
 			}else if (recorrido < 0){
 				if((CoordCamb - newCoord) > 50){
-					img(rutaRel+"Trasero_Caminando1.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[3][0], Pj, CoordStatic, CoordCamb);
 				} else if((CoordCamb - newCoord) < 50 & (CoordCamb - newCoord) > 1){
-					img(rutaRel+"Trasero_Caminando2.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[3][1], Pj, CoordStatic, CoordCamb);
 				} else{
-					img(rutaRel+"Trasero_Iddle.png", Pj, CoordStatic, CoordCamb);
+					img(rutaRel+walkDirection[3][2], Pj, CoordStatic, CoordCamb);
 				}
 			}
 		}

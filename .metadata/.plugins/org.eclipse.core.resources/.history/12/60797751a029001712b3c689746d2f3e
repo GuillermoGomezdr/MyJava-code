@@ -1,0 +1,7 @@
+
+public class General {
+	String dni;
+	String nombre;
+	String apellido1;
+	String apellido2;
+}

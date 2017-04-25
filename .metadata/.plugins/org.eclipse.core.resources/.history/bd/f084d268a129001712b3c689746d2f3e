@@ -1,0 +1,39 @@
+
+public class Profesor {
+	double sueldo;
+	int aniosExperiencia;
+	boolean esFijo;
+	
+	public Profesor(double sueldo, int aniosExperiencia, boolean esFijo) {
+		super();
+		this.sueldo = sueldo;
+		this.aniosExperiencia = aniosExperiencia;
+		this.esFijo = esFijo;
+	}
+
+	public double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+
+	public int getAniosExperiencia() {
+		return aniosExperiencia;
+	}
+
+	public void setAniosExperiencia(int aniosExperiencia) {
+		this.aniosExperiencia = aniosExperiencia;
+	}
+
+	public boolean isEsFijo() {
+		return esFijo;
+	}
+
+	public void setEsFijo(boolean esFijo) {
+		this.esFijo = esFijo;
+	}
+	
+	
+}

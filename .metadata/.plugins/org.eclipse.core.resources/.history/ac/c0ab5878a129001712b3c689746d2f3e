@@ -1,0 +1,16 @@
+
+public class Profesor extends General {
+	double sueldo;
+	int aniosExperiencia;
+	boolean esFijo;
+	
+	public Profesor(String dni, String nombre, String apellido1, String apellido2, double sueldo, int aniosExperiencia,
+			boolean esFijo) {
+		super(dni, nombre, apellido1, apellido2);
+		this.sueldo = sueldo;
+		this.aniosExperiencia = aniosExperiencia;
+		this.esFijo = esFijo;
+	}
+	
+	
+}
