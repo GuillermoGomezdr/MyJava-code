@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 
 public class Juego_PruebaSprite_Anim{
 	
+	private static Mapa mapClass = new Mapa();
+	static int boxSize = 100;
 	
 	static JLabel PJlabel = new JLabel("");					// Creo un JLaber.
 	static boolean movRight = false;						// Creamos una variable booleana para cada tipo de movimiento,
@@ -23,15 +25,16 @@ public class Juego_PruebaSprite_Anim{
 	public static void main (String[] args) {
      	
 		JFrame window = new JFrame();								// Creo un JFrame de prueba.
-		window.setBounds(100, 100, 1000, 1000);						// Damos unas propiedades b�sicas al JFrame.
+		window.setBounds(100, 100, 600, 600);						// Damos unas propiedades b�sicas al JFrame.
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		window.setVisible(true);
 		
 		ImageIcon Pj = new ImageIcon( rutaRel+"Frente_Iddle.png");
 		
-		int pjx = 0;										// Declaramos variables para las coordenadas de X e Y que se usar� el Pj.
-		int pjy = 0;
+		int pjx = 300;										// Declaramos variables para las coordenadas de X e Y que se usar� el Pj.
+		int pjy = 300;
+		mapClass.insertPj(pjx/boxSize, pjy/boxSize, true);
 
 		PJlabel.setIcon(Pj);								// A este JLaber le metemos un Icon, con la ruta de la imagen, 
 		PJlabel.setBounds(pjx, pjy, 100, 100);				// posteriormente, le daremos unas coordenadas y tama�o.
@@ -87,8 +90,15 @@ public class Juego_PruebaSprite_Anim{
 	
 	public static int Movimiento(boolean direccion, char eje, int recorrido, int CoordCamb, int CoordStatic, ImageIcon Pj){
 		double contador = 0;														//Crearemos una variable que nos servir� de contador.
-		if(direccion == true){														//Si una variable de movimiento es true, haremos:
-			int newCoord = CoordCamb + recorrido;										//1. Calcularemos la coordenada final.
+		int newCoord = CoordCamb + recorrido;										//Calcularemos la coordenada final.
+		
+		if(eje == 'x')
+			if(mapClass.checkMap(newCoord/boxSize, CoordStatic/boxSize) == 1)
+				return CoordCamb;
+		if (eje == 'y')
+			if(mapClass.checkMap(CoordStatic/boxSize, newCoord/boxSize) == 1)
+				return CoordCamb;
+		if(direccion){														//Si una variable de movimiento es true, haremos:
 			while(CoordCamb != newCoord){												//2. Siempre que la coordenada actual, sea distinta que la final...
 				contador+=0.05;															//3. ... Incrementa el contador en 0.05 (valor arbitrario para controlar la velocidad de movimiento)
 				if(contador > 250000){													//4. Llamamos a la función para colocar al Pj dependiendo de la dirección.
@@ -106,6 +116,8 @@ public class Juego_PruebaSprite_Anim{
 	
 	public static void imprimirPersonaje(char eje, int recorrido, int CoordCamb, int CoordStatic, int newCoord, ImageIcon Pj){
 		if(eje == 'x'){
+			mapClass.insertPj(newCoord/boxSize, CoordStatic/boxSize, true);
+			mapClass.insertPj(CoordCamb/boxSize, CoordStatic/boxSize, false);
 			if(recorrido > 0){													
 				if((newCoord - CoordCamb) > 50){
 					img(rutaRel+walkDirection[0][0], Pj, CoordCamb, CoordStatic);
@@ -124,6 +136,8 @@ public class Juego_PruebaSprite_Anim{
 				}
 			}
 		} else if (eje == 'y'){
+			mapClass.insertPj(CoordStatic/boxSize, newCoord/boxSize, true);
+			mapClass.insertPj(CoordStatic/boxSize, CoordCamb/boxSize, false);
 			if(recorrido > 0){													
 				if((newCoord - CoordCamb) > 50){
 					img(rutaRel+walkDirection[2][0], Pj, CoordStatic, CoordCamb);
@@ -148,7 +162,6 @@ public class Juego_PruebaSprite_Anim{
 		PJlabel.setIcon(Pj);
 		PJlabel.setBounds(CoordCamb, CoordStatic, 100, 100);
 	}
-
 }
 
 

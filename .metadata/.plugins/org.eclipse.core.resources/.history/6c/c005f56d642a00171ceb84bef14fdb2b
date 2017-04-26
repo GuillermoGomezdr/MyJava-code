@@ -1,0 +1,16 @@
+
+public class Mapa {
+
+	int map[][] ={{1, 1, 1, 1, 1, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 1, 1, 1, 1, 1}};
+	int boxSize = 100;
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+
+public class Mapa {
+
+	static int map[32][32];
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

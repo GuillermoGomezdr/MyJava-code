@@ -1,0 +1,19 @@
+
+public class Mapa {
+
+	int map[][] = new int[6][6];
+	//int objs[][] = new int[32][32];
+	
+	map = {{1, 1, 1, 1, 1, 1},
+		   {1, 0, 0, 0, 0, 1},
+		   {1, 0, 0, 0, 0, 1},
+		   {1, 0, 0, 0, 0, 1},
+		   {1, 0, 0, 0, 0, 1},
+		   {1, 1, 1, 1, 1, 1}
+	};
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

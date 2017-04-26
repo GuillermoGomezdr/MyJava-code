@@ -1,5 +1,5 @@
 //05.04.2017
-public class Coche extends Vehiculo {
+/*public class Coche extends Vehiculo {
 
 	//1. Añadir los atributos de la clase
 	
@@ -15,8 +15,8 @@ public class Coche extends Vehiculo {
 	int plazas;
 	
 	//2. Método/s constructor/es
-	public Coche(/*String matricula, String marca, String modelo,*/ String color, double precio, /*int cilindrada,*/
-			double peso, char combustible, /*boolean itv,*/ int plazas) {
+	public Coche(/*String matricula, String marca, String modelo,*/ /*String color, double precio, /*int cilindrada,*//*
+			double peso, char combustible, /*boolean itv,*/ /*int plazas) {
 		//this.matricula = matricula;
 		//this.marca = marca;
 		//this.modelo = modelo;
@@ -70,3 +70,4 @@ public class Coche extends Vehiculo {
 	
 
 }
+*/

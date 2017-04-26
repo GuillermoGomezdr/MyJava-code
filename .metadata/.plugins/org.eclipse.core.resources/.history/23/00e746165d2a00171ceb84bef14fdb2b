@@ -1,0 +1,11 @@
+
+public class Mapa {
+
+	int map[][] = new int[32][32];
+	int objs[][] = new int[32][32];
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

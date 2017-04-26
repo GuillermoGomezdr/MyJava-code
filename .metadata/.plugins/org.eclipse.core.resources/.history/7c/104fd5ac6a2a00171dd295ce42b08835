@@ -1,0 +1,18 @@
+
+public class Mapa {
+
+	int map[][] ={{1, 1, 1, 1, 1, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 0, 0, 0, 0, 1},
+				  {1, 1, 1, 1, 1, 1}};
+	int boxSize = 100;
+	
+	//private Juego_PruebaSprite_Anim B = new Juego_PruebaSprite_Anim();
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
