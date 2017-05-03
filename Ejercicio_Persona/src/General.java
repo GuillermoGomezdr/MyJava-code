@@ -5,8 +5,8 @@ public class General {
 	protected String apellido1;
 	protected String apellido2;
 	
+ 	
 	public General(String dni, String nombre, String apellido1, String apellido2) {
-		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;

@@ -1,7 +1,7 @@
 
 public class Empleado extends General {
 	double sueldo;
-	char categoria;
+	char categoria;  // l -> limpieza \ a -> admin \ d -> directivo
 	
 	public Empleado(String dni, String nombre, String apellido1, String apellido2, double sueldo, char categoria) {
 		super(dni, nombre, apellido1, apellido2);
