@@ -1,0 +1,15 @@
+
+public class Ejercicio01_Fecha {
+	
+	private int dia, mes, anio;
+	
+	public Ejercicio01_Fecha() {
+		dia = 1;
+		mes = 1;
+		anio = 2000;
+	}
+	
+	public String escribeCorto() {
+		return dia + " // "+ mes + " // " + anio;
+	}
+}

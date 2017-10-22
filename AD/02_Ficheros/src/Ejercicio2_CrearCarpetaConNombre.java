@@ -1,0 +1,23 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Ejercicio2_CrearCarpetaConNombre {
+
+	public static void main(String[] args) {
+		String nombreCarpeta = "";
+		
+		Scanner scan = new Scanner(System.in);
+		nombreCarpeta = scan.nextLine();
+		scan.close();
+
+		File carpeta = new File(nombreCarpeta);
+		
+		if(carpeta.mkdir() == true)
+			System.out.println("La carpeta se ha creado.");
+		else
+			System.out.println("La carpeta no se ha creado.");
+
+	}
+
+}

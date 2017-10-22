@@ -1,0 +1,27 @@
+
+public class Ejercicio01_NIF {
+	int dni;
+	char letra;
+	
+	// getters y setters
+	public int getDni() {
+		return dni;
+	}
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+	
+	public char getLetra() {
+		return letra;
+	}
+	public void setLetra(char letra) {
+		this.letra = letra;
+	}
+	
+	// métodos de escritura
+	public String escribir(int num, char letra) {
+		return "El NIF es: " + dni + letra;
+	}
+	
+	
+}

@@ -1,0 +1,10 @@
+
+public class MetodosClase {
+
+	public static void main(String[] args) {
+
+		Fecha f1 = new Fecha();
+
+	}
+
+}

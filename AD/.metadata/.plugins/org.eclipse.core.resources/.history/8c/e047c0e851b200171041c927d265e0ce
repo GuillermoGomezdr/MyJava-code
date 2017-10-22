@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Ejercicio1_CrearConNombre {
+
+	public static void main(String[] args) {
+		String nombreFichero = "";
+		
+		Scanner scan = new Scanner(System.in);
+		nombreFichero = scan.nextLine();
+		scan.close();
+
+		System.out.println(nombreFichero);
+	}
+
+}

@@ -1,0 +1,7 @@
+
+public class Ejercicio01_NIF {
+	int dni;
+	char letra;
+	
+	// getters y setters
+}

@@ -1,0 +1,10 @@
+
+public class Fecha {
+	
+	private int dia, mes, anio;
+	
+	public Fecha() {
+		
+	}
+	
+}
