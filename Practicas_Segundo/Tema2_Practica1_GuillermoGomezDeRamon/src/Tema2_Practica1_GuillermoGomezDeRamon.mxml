@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			
+			
+			//Login
+			protected function btnLogin_clickHandler(event:MouseEvent):void
+			{
+				if( txtLogin.text == txtPass.text && txtLogin.text != ""){
+					btnLogin.enabled = false;
+					btnLogout.enabled = true;
+					
+					if(rdCalculadora.selected == true)
+						panelCalculadora.enabled = true;
+					else if(rdPitagoras.selected == true)
+						panelPitagoras.enabled = true;
+						
+				}else if( txtLogin.text == "" || txtPass.text == ""){
+					Alert.show('¡Ha dejado algouno de los campos en blanco!', 'Error de logueo', mx.controls.Alert.OK);
+				} else if( txtLogin.text != txtPass.text){
+					Alert.show('¡El nombre de usuario o contraseña son incorrectos!', 'Error de logueo', mx.controls.Alert.OK);
+				}
+			}
+			
+			//Logout
+			protected function btnLogout_clickHandler(event:MouseEvent):void
+			{
+				Alert.show('Salir', '¿Realmente desea salir?', Alert.OK |  Alert.CANCEL, this, exit_app);	
+			}
+			
+			
+			protected function exit_app(event:CloseEvent):void
+			{
+				if (event.detail == Alert.OK){
+					txtLogin.text = "";
+					txtPass.text = "";
+				
+					panelCalculadora.enabled = false;
+					panelPitagoras.enabled = false;
+				
+					btnLogin.enabled = true;
+					btnLogout.enabled = false;
+				}
+			}
+			
+			//Cambiar entre Calculadora y Pitágoras
+			protected function rdCalculadora_clickHandler(event:MouseEvent):void
+			{
+				if(btnLogin.enabled == false){
+					if(rdCalculadora.enabled == true){
+						panelPitagoras.enabled = false;
+						panelCalculadora.enabled = true;
+					}
+				}
+			}
+			
+			protected function rdPitagoras_clickHandler(event:MouseEvent):void
+			{
+				if(btnLogin.enabled == false){
+					if (rdCalculadora.enabled == true){
+						panelCalculadora.enabled = false;
+						panelPitagoras.enabled = true;
+					}
+				}
+			}
+			
+			//Funciones de Pitágoras
+			protected function image1_clickHandler(event:MouseEvent):void
+			{
+				txtHipotenusa.text = (Math.sqrt(Math.pow(parseFloat(txtCat1.text), 2) + Math.pow(parseFloat(txtCat2.text), 2) )).toString();
+			}
+			
+			protected function btnReiniciar_clickHandler(event:MouseEvent):void
+			{
+				txtCat1.text = "";
+				txtCat2.text = "";
+				txtHipotenusa.text = "";
+			}
+			
+			//Funciones de Calculadora
+			var v1:int;
+			var v2:int;
+			var operacion:int;
+			var last:int;			// 1 = v1 // 2 = v2 // 3 = operación
+			
+			protected function panelCalculadora_clickHandler(event:MouseEvent):void
+			{
+				if(last = 1)
+					txtOperacion.text += v1.toString();
+				else if(last = 2)
+					txtOperacion.text += v2.toString();
+				
+				txtCat1.text = last.toString();
+				
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				if(last == 0){
+					v1 = 1;
+					last++;
+				} else if(last == 1){
+					v2 = 1;
+					last++;
+				}
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				if(last == 0){
+					v1 = 2;
+					last++;
+				} else if(last == 1){
+					v2 = 2;
+					last++;
+				}
+			}
+			
+		]]>
+		
+		
+		
+		
+		
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Panel id="panelAcceso" x="233" y="85" width="329" height="174" title="Acceso">
+		<s:TextInput id="txtLogin" x="13" y="12" width="162" height="31" fontSize="15" prompt="Login"/>
+		<s:TextInput id="txtPass" x="13" y="51" width="162" height="31" displayAsPassword="true"
+					 fontSize="15" prompt="Password"/>
+		<s:Label x="184" y="16" width="62" height="19" fontSize="16" text="Activar:"/>
+		<s:RadioButton id="rdCalculadora" x="196" y="35" width="104" label="Calculadora"
+					   click="rdCalculadora_clickHandler(event)" fontSize="15" groupName="grAct"
+					   selected="true"/>
+		<s:RadioButton id="rdPitagoras" x="196" y="58" width="104" label="Pitágoras"
+					   click="rdPitagoras_clickHandler(event)" fontSize="15" groupName="grAct"/>
+		<s:Button id="btnLogin" x="55" y="95" width="100" height="32" label="Login"
+				  click="btnLogin_clickHandler(event)" fontSize="15"/>
+		<s:Button id="btnLogout" x="166" y="95" width="100" height="32" label="Logout"
+				  click="btnLogout_clickHandler(event)" enabled="false" fontSize="15"/>
+		
+	</s:Panel>
+	<s:Panel id="panelPitagoras" x="233" y="276" width="329" height="173" enabled="false"
+			 title="Teorema de Pitágoras">
+		<s:TextInput id="txtCat1" x="210" y="10" width="107" height="31" fontSize="15"
+					 prompt="Cateto 1"/>
+		<s:TextInput id="txtCat2" x="210" y="49" width="107" height="31" fontSize="15"
+					 prompt="Cateto 2"/>
+		<s:TextInput id="txtHipotenusa" x="210" y="88" width="107" height="31" enabled="false"
+					 fontSize="15" maxChars="4" prompt="Hipotenusa"/>
+		<s:Image x="10" y="10" width="192" height="118" click="image1_clickHandler(event)"
+				 scaleMode="stretch" smooth="true" smoothingQuality="high"
+				 source="assets/img032.png"/>
+		<s:Button id="btnReiniciar" x="210" y="-27" width="107" label="Reiniciar"
+				  click="btnReiniciar_clickHandler(event)"/>
+	</s:Panel>
+	<s:Panel id="panelCalculadora" x="577" y="85" width="233" height="364"
+			 click="panelCalculadora_clickHandler(event)" enabled="false"
+			 title="Calculadora sencilla">
+		<s:TextInput id="txtOperacion" x="15" y="11" width="206" height="22" enabled="false"
+					 fontFamily="Arial" fontSize="15" textAlign="right"/>
+		<s:TextInput id="txtResultadoOperacion" x="14" y="39" width="206" height="67" enabled="false"
+					 fontSize="15" prompt="0" textAlign="right"/>
+		<s:Button x="15" y="114" width="45" height="45" label="1" click="button1_clickHandler(event)"
+				  fontSize="15" fontWeight="normal"/>
+		<s:Button x="68" y="114" width="45" height="45" label="2" click="button2_clickHandler(event)"
+				  fontSize="15" fontWeight="normal"/>
+		<s:Button x="121" y="114" width="45" height="45" label="2" fontSize="15" fontWeight="normal"/>
+		<s:Button x="174" y="114" width="45" height="45" label="+" fontSize="15" fontWeight="bold"/>
+		<s:Button x="14" y="167" width="45" height="45" label="4" fontSize="15" fontWeight="normal"/>
+		<s:Button x="67" y="167" width="45" height="45" label="5" fontSize="15" fontWeight="normal"/>
+		<s:Button x="120" y="167" width="45" height="45" label="6" fontSize="15" fontWeight="normal"/>
+		<s:Button x="173" y="167" width="45" height="45" label="-" fontSize="15" fontWeight="bold"/>
+		<s:Button x="14" y="220" width="45" height="45" label="7" fontSize="15" fontWeight="normal"/>
+		<s:Button x="14" y="273" width="45" height="45" label="C" fontSize="15" fontWeight="bold"/>
+		<s:Button x="67" y="273" width="45" height="45" label="0" fontSize="15" fontWeight="normal"/>
+		<s:Button x="120" y="273" width="45" height="45" label="=" enabled="true" fontSize="15"
+				  fontWeight="bold"/>
+		<s:Button x="173" y="273" width="45" height="45" label="/" fontSize="15"
+				  fontWeight="bold"/>
+		<s:Button x="67" y="220" width="45" height="45" label="8" fontSize="15" fontWeight="normal"/>
+		<s:Button x="120" y="220" width="45" height="45" label="9" fontSize="15" fontWeight="normal"/>
+		<s:Button x="173" y="220" width="45" height="45" label="x" fontSize="15" fontWeight="bold"/>
+	</s:Panel>
+</s:Application>
